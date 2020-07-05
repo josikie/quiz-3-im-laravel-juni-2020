@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,18 +12,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+use Illuminate\Support\Facades\Route;
+
 Route::get('/', function () {
-    return view('form');
+    return view('layouts.master');
 });
 
-Route::get('/pertanyaan', 'PertanyaanController@index'); //menampilkan tabel data pertanyaan
-
-Route::get('/pertanyaan/create', 'PertanyaanController@create'); //menampilkan form untuk membuat pertanyaan baru
-
-Route::post('/pertanyaan', 'PertanyaanController@store'); //menyimpan data baru ke tabel pertanyaan
-
-Route::get('/jawaban/{pertanyaan_id}', 'JawabanController@index'); //menampilkan jawaban dari pertanyaan dengan id tertentu
-
-Route::post('/jawaban/{pertanyaan_id}', 'JawabanController@store'); //menyimpan jawaban baru untuk pertanyaan dengan id tertentu
-
-Route::get('/jawaban', 'JawabanController@create'); // ke halaman input jawaban
+Route::get('/items/create', 'ItemController@create'); // menampilkan halaman form
+Route::post('/items', 'ItemController@store'); // menyimpan data
+Route::get('/items', 'ItemController@index'); // menampilkan semua
+Route::get('/items/{id}', 'ItemController@show'); // menampilkan detail item dengan id 
+Route::get('/items/{id}/edit', 'ItemController@edit'); // menampilkan form untuk edit item
+Route::put('/items/{id}', 'ItemController@update'); // menyimpan perubahan dari form edit
+Route::delete('/items/{id}', 'ItemController@destroy'); // menghapus data dengan id
