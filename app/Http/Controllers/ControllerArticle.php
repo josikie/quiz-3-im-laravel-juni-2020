@@ -1,43 +1,43 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\ModelArticle;
+use App\Models\ArticleModel;
 use Illuminate\Http\Request;
 
-class ArticleController extends Controller
+class ControllerArticle extends Controller
 {
     public function create(){
         return 'article.create';
     }
     
     public function index(){
-        $articles = ModelArticle::get_all();
+        $articles = ArticleModel::get_all();
         return view('index', compact('articles'));
     }
     public function edit($id){
-        $article = ModelArticle::find_by_id($id);
+        $article = ArticleModel::find_by_id($id);
         return view('article.edit', compact('article'));
     }
 
     public function show($id){
-        $articlee = ModelArticle::find_by_id($id);
+        $articlee = ArticleModel::find_by_id($id);
 
         return view('article.show', compact('$item'));
     }
 
     public function store(Request $request){
-        $new_article = ModelArticle::save($request->all());
+        $new_article = ArticleModel::save($request->all());
         return redirect('/items');
     }
 
     public function update($id, Request $request){
-        $articleee = ModelArticle::update($id, $request->all());
+        $articleee = ArticleModel::update($id, $request->all());
 
         redirect('/items');
     }
 
     public function destroy($id){
-        $deleted = ModelArticle::destroy($id);
+        $deleted = ArticleModel::destroy($id);
 
         return redirect('/items');
     }
