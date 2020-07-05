@@ -4,7 +4,7 @@
 
  use Illuminate\Support\Facades\DB;
 
- class ArtikelModel{
+ class ModelArticle{
      public static function get_all(){
          $_artikel = DB::table('article')->get();
          return $_artikel;
